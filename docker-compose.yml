@@ -1,6 +1,46 @@
+# docker-compose.yml
+
+# This file defines the multi-container application.
+# It specifies two main services: 'ollama' and 'dominicanchatbot'.
+# You can start both services with a single command: docker-compose up
+
+version: '3.9'
+
 services:
+  # This is the Ollama service that will run and serve the large language model.
+  ollama:
+    # We use the official Ollama image from Docker Hub.
+    image: ollama/ollama:latest
+    container_name: ollama_service
+    # This section ensures that the models you download are persisted
+    # even if you stop and remove the container. It creates a named volume
+    # called 'ollamadata' and maps it to the directory inside the container
+    # where Ollama stores its models.
+    volumes:
+      - ollamadata:/root/.ollama
+    # This exposes Ollama's API port (11434) to your host machine,
+    # which can be useful for direct testing, but is not required for the
+    # services to talk to each other.
+    ports:
+      - "11434:11434"
+    # This ensures the container restarts automatically if it crashes.
+    restart: unless-stopped
+
+  # This is your Python application service.
   dominicanchatbot:
-    image: dominicanchatbot
+    # Instead of pulling an image, we build it from the local Dockerfile.
     build:
       context: .
       dockerfile: ./Dockerfile
+    container_name: dominican_chatbot_app
+    # This line is crucial. It tells this service to wait until the
+    # 'ollama' service is up and running before it starts.
+    depends_on:
+      - ollama
+    # This ensures the container restarts automatically if it crashes.
+    restart: unless-stopped
+
+# This defines the named volume we referenced in the ollama service.
+# Docker manages this volume for you.
+volumes:
+  ollamadata:
