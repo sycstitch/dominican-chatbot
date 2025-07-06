@@ -5,7 +5,8 @@
   <img src="https://img.shields.io/badge/Hugging%20Face-Transformers-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face Transformers"/>
 </p>
 
-# **Case Study Outline & Project Log**
+# DOMINICAN CHATBOT
+### **Case Study Outline & Project Log**
 
 - **Started:** July 4, 2025
 - **Last Updated:** July 6, 2025
