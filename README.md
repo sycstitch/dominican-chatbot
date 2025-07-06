@@ -7,14 +7,39 @@
 
 # **Case Study Outline & Project Log**
 
-**Last Updated:** July 5, 2025
+- **Started:** July 4, 2025
+- **Last Updated:** July 6, 2025
 <br /><br />
 
+### **Run the project**
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/sycstitch/dominican-chatbot.git
+    cd dominican-chatbot
+    ```
+2.  **Build and start the services:**
+    ```bash
+    docker-compose up -d
+    ```
+3.  **Download the required models:**
+    ```bash
+    docker-compose exec ollama ollama pull mistral:7b-instruct-q4_K_M
+    docker-compose exec ollama ollama pull all-minilm:l6-v2
+    ```
+4.  **(Optional) Verify models are installed:**
+    ```bash
+    docker-compose exec ollama ollama list
+    ```
+5.  **Run the interactive chatbot:**
+    ```bash
+    docker-compose run --rm dominicanchatbot
+    ```
 
-**Run the project**
+**(Draft) Possible Reusuable Workflow Afterwards:**
 - `docker-compose down`
 - `docker-compose build`
 - `docker-compose run --rm dominicanchatbot`
+<br />
 
 ## **1. Project Description**
 
@@ -51,15 +76,21 @@ This section outlines the key questions, points of confusion, and learning miles
 * **Pivotal Moment 3: The "Two-Model" Workflow**
   * **Problem:** Realized that GUI tools or a basic Ollama setup are designed for one model at a time.
   * **Learning:** The professional workflow is to use a **Python script** as the orchestrator to manage both models.
-* **Pivotal Moment 4: Clarifying the Architecture**
-  * **Problem:** Why wouldn't Ollama just run both models? Why separate them?
-  * **Learning:** The optimal architecture is to treat the two models differently based on their size and function. The large Generator model (`Mistral-7B`) runs as a dedicated service via Ollama (like a "power plant"), while the small Retriever model (`all-MiniLM`) is loaded directly into the Python script (like a "handheld tool"). This is more efficient and gives the script faster, more direct control over the retrieval process.
-* **Pivotal Moment 5: Data Provenance & Ethics**
-  * **Problem:** Realized that the primary dictionary source was proprietary, making it unethical and illegal to reproduce in a public project.
-  * **Learning:** The project's public-facing version will use a small, representative sample of 10-15 terms in a `dominican-terms-example.json` file. This allows the technology to be showcased without infringing on copyright.
 * **Strategic Decision: Model Selection Philosophy**
   * **Problem:** Should I be very picky about models from the start?
   * **Learning:** Start with reliable, industry-standard models to build the system's foundation. Defer "pickiness" to the final testing phase with OpenRouter.
+* **Pivotal Moment 4: Clarifying the Architecture**
+  * **Problem:** Why wouldn't Ollama just run both models? Why separate them?
+  * **Learning:** The optimal architecture is to treat the two models differently based on their size and function. The large Generator model (`Mistral-7B`) runs as a dedicated service via Ollama (like a "power plant"), while the small Retriever model (`all-MiniLM`) is loaded directly into the Python script (like a "handheld tool").
+* **Pivotal Moment 5: Solving Docker Interactivity**
+  * **Problem:** The Python script, which used `input()`, would immediately crash with an `EOFError` when run with `docker-compose up`.
+  * **Learning:** The initial approach was to add `tty: true` and `stdin_open: true` to the `docker-compose.yml` file. While this is a valid technique for some scenarios, the more robust and effective solution for this project was to use the `docker-compose run` command, which is specifically designed for running interactive tasks and correctly allocates a terminal.
+* **Pivotal Moment 6: Understanding Docker Data Persistence**
+  * **Problem:** After downloading the models, no files appeared in the project folder. Where did the models go? Will other users get them automatically?
+  * **Learning:** Models are large data assets, not source code. They are downloaded into a **Docker Volume** (`ollamadata` in this case), which is a separate, persistent storage space managed by Docker. New users will need to run the `ollama pull` commands themselves to populate their own local volume.
+* **Pivotal Moment 7: Data Provenance & Ethics**
+  * **Problem:** Realized that the primary dictionary source was proprietary, making it unethical and illegal to reproduce in a public project.
+  * **Learning:** The project's public-facing version will use a small, representative sample of 10-15 terms in a `dominican-terms-example.json` file. This allows the technology to be showcased without infringing on copyright.
 <br /><br />
 
 ## **3. Tools, Models & Hardware**
@@ -101,21 +132,21 @@ This project aims for authenticity, but it's important to acknowledge its limita
 ## **5. Step-by-Step Project Plan**
 
 * **Phase 1: Setup & Environment (Done)**
-  * \[x] **Action:** Confirmed hardware suitability and development tool choices.
-  * \[x] **Action:** Created a `Dockerfile` for the Python application and a `docker-compose.yml` to define the application services (Ollama + Python chatbot).
-  * \[x] **Action:** Confirm input works with Docker.
-  * \[ ] **Action:** Used the Docker setup to run Ollama and download the selected Generator and Retriever models.
-  * \[ ] **Action:** Converted the initial dictionary entries into a structured `JSON` format.
-  * \[ ] **Action:** Protected the proprietary data by creating a separate, smaller `dominican-terms-example.json` for public repository use.
+  * [x] **Action:** Confirmed hardware suitability and development tool choices.
+  * [x] **Action:** Created a `Dockerfile` for the Python application and a `docker-compose.yml` to define the application services (Ollama + Python chatbot).
+  * [x] **Action:** Confirmed interactive input works with Docker.
+  * [x] **Action:** Used the Docker setup to run Ollama and download the selected Generator and Retriever models.
+  * [ ] **Action:** Convert the initial dictionary entries into a structured `JSON` format.
+  * [ ] **Action:** Protect the proprietary data by creating a separate, smaller `dominican-terms-example.json` for public repository use.
 * **Phase 2: Core RAG Prototyping (Current Step)**
-  * \[ \] **Action:** Launch the entire environment with a single command: `docker-compose up`.
-  * \[ \] **Action:** Create the main Python script for the chatbot service.
-  * \[ \] **Action:** In the script, load the `dominican-terms-example.json` data.
-  * \[ \] **Action:** In the script, load the `all-MiniLM-L6-v2` model and write the "retrieval" function.
-  * \[ \] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
-  * \[ \] **Goal:** Create a working command-line version of the chatbot where the entire RAG pipeline is functional using the sample data.
+  * [ ] **Action:** Launch the entire environment with a single command: `docker-compose run --rm dominicanchatbot`.
+  * [ ] **Action:** Create the main Python script for the chatbot service.
+  * [ ] **Action:** In the script, load the `dominican-terms-example.json` data.
+  * [ ] **Action:** In the script, load the `all-MiniLM-L6-v2` model and write the "retrieval" function.
+  * [ ] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
+  * [ ] **Goal:** Create a working command-line version of the chatbot where the entire RAG pipeline is functional using the sample data.
 * **Phase 3: Polishing & Optimization**
-  * \[ \] **Action:** Adapt the Python script to point its API requests to OpenRouter.
-  * \[ \] **Action:** Systematically test various high-end models (e.g., GPT-4o, Claude 3.5 Sonnet).
-  * \[ \] **Action:** Evaluate responses based on creativity, adherence to the persona, and accuracy.
-  * \[ \] **Goal:** Select the definitive "best" Generator model for the final version of the project and document why it was chosen.
+  * [ ] **Action:** Adapt the Python script to point its API requests to OpenRouter.
+  * [ ] **Action:** Systematically test various high-end models (e.g., GPT-4o, Claude 3.5 Sonnet).
+  * [ ] **Action:** Evaluate responses based on creativity, adherence to the persona, and accuracy.
+  * [ ] **Goal:** Select the definitive "best" Generator model for the final version of the project and document why it was chosen.
