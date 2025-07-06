@@ -1,0 +1,6 @@
+services:
+  dominicanchatbot:
+    image: dominicanchatbot
+    build:
+      context: .
+      dockerfile: ./Dockerfile
