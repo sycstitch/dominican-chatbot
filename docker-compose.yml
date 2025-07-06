@@ -4,8 +4,6 @@
 # It specifies two main services: 'ollama' and 'dominicanchatbot'.
 # You can start both services with a single command: docker-compose up
 
-version: '3.9'
-
 services:
   # This is the Ollama service that will run and serve the large language model.
   ollama:
@@ -39,6 +37,11 @@ services:
       - ollama
     # This ensures the container restarts automatically if it crashes.
     restart: unless-stopped
+    # Essential for interactive applications. They connect
+    # your terminal to the container, allowing the input() function in Python
+    # to work correctly.
+    stdin_open: true # Keep stdin open for input
+    tty: true        # Allocate a pseudo-TTY to make it interactive
 
 # This defines the named volume we referenced in the ollama service.
 # Docker manages this volume for you.
