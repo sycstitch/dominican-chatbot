@@ -9,7 +9,7 @@
 ### **Case Study Outline & Project Log**
 
 - **Started:** July 4, 2025
-- **Last Updated:** July 6, 2025
+- **Last Updated:** July 9, 2025
 <br /><br />
 
 ### **Run the project**
@@ -132,12 +132,24 @@ This project aims for authenticity, but it's important to acknowledge its limita
 
 ## **5. Step-by-Step Project Plan**
 
-* **Phase 1: Setup & Environment (Done)**
+* **Phase 1: Setup & Environment**
   * [x] **Action:** Confirmed hardware suitability and development tool choices.
   * [x] **Action:** Created a `Dockerfile` for the Python application and a `docker-compose.yml` to define the application services (Ollama + Python chatbot).
   * [x] **Action:** Confirmed interactive input works with Docker.
   * [x] **Action:** Used the Docker setup to run Ollama and download the selected Generator and Retriever models.
-  * [ ] **Action:** Convert the initial dictionary entries into a structured `JSON` format.
+  * [ ] **Action:** Determine `JSON` format for dictionary entries.
+    * [x] Vocabulary (July 7-9)
+    * [ ] Habits
+  * [ ] **Action:** Convert dictionary vocabulary entries into a structured `JSON` format.
+    * [ ] **Action:** Create a Python script to automate the first-pass conversion of the dictionary source into a structured JSON format.
+      * [ ] Vocabulary
+      * [ ] Habits
+    * [ ] **Action:** Create a second Python script to validate the generated JSON output, flagging any entries that do not conform to the data structure.
+      * [ ] Vocabulary
+      * [ ] Habits
+    * [ ] **Action:** Manually review and correct the entries flagged by the validation script, implementing the "Script -> Validate -> Correct" loop.
+      * [ ] Vocabulary
+      * [ ] Habits
   * [ ] **Action:** Protect the proprietary data by creating a separate, smaller `dominican-terms-example.json` for public repository use.
 * **Phase 2: Core RAG Prototyping (Current Step)**
   * [ ] **Action:** Launch the entire environment with a single command: `docker-compose run --rm dominicanchatbot`.
