@@ -138,7 +138,7 @@ This project aims for authenticity, but it's important to acknowledge its limita
   * [x] **Action:** Confirmed interactive input works with Docker.
   * [x] **Action:** Used the Docker setup to run Ollama and download the selected Generator and Retriever models.
   * [ ] **Action:** Determine `JSON` format for dictionary entries.
-    * [x] Vocabulary
+    * [x] Vocabulary (July 7-9)
     * [ ] Habits
   * [ ] **Action:** Convert dictionary vocabulary entries into a structured `JSON` format.
     * [ ] **Action:** Create a Python script to automate the first-pass conversion of the dictionary source into a structured JSON format.
