@@ -46,72 +46,90 @@
 
 ### Roadmap
 
-Perfect — here’s a personalized study plan based on your project and where you're at. It's broken into 3 phases:
+#### **Step 1: Read the File and Confirm Path**
 
-🧩 PHASE 1: Get the Core Working
-Goal: Read the file, split it into entries, and output clean data.
-🔹 Concepts to Study (in order)
-	1	File I/O Basics
-	- open(), with statement, reading lines
-	- ✅ Why: You'll read domislang.txt line by line.
-	2	String Methods
-	- .strip(), .split(), .startswith(), .lower()
-	- ✅ Why: Used constantly when parsing lines like EX: ..., Usage: ..., SYN: ...
-	3	Lists
-	- How to build lists, append to them, loop through them
-	- ✅ Why: Each term = a list of lines → list of lists
-	4	Control Flow
-	- for loops, if/elif, break, continue
-	- ✅ Why: You’ll use this to build chunks, skip headers (# A), or exit early
-	5	Returning Values from Functions
-	- return keyword, returning lists and dicts
-	- ✅ Why: Your parse_entries() function needs to return structured data
-	6	Basic Counting and Lengths
-	- len(), print() for sanity checking
-	- ✅ Why: You want to print how many terms were parsed
+First, let's just make sure we can access and read the source file. This step validates your file path and environment setup.
 
-🏗 PHASE 2: Build the Schema
-Goal: Convert each entry chunk into a JSON-ready object that matches your format.
-🔹 Concepts to Study (in order)
-	7	Dictionaries & Nesting
-	- Creating dicts, nesting dicts in lists
-	- ✅ Why: You’re building deeply nested objects for each term and its meanings
-	8	Working with Optional Keys
-	- Conditional logic to add fields only when needed
-	- ✅ Why: You don’t want empty etymology keys in every object
-	9	String Cleaning + Normalization
-	- Replacing accents, trimming, standardizing terms/tags
-	- ✅ Why: Ensures consistency (bembú, Bembú, BEMBÚ → all normalized)
-	10	Skipping Unwanted Lines
-	- Using .startswith('#') or regex to skip headers
-	- ✅ Why: Some lines like # A or separators are junk
-	11	Regex Basics
-	- re.match(), re.search(), capturing groups
-	- ✅ Why: Needed for multi-term lines like Fullín / Fundillo / Fuí, or matching Usage: 7 / 10
-	12	JSON Serialization
-	- json.dump() vs json.dumps(), handling Unicode, indent=2
-	- ✅ Why: You’ll be exporting your final file
+* **What to Do:** In a new cell, write code to open `domislang.txt` and print the first 500 characters. This confirms you're reading the correct file without overwhelming your screen.
+* **Python Concepts:**
+    * **`os.path.join()`**: For building operating-system-aware file paths.
+    * **`with open(...) as f:`**: The standard, safe way to open and automatically close a file.
+    * **`f.read(500)`**: Reads a specified number of characters from the file.
 
-🧪 PHASE 3: Clean It, Test It, Expand It
-Goal: Ensure accuracy, clean edge cases, and prepare to scale the project.
-🔹 Concepts to Study (in order)
-	13	Data Cleaning Best Practices
-	- Standardizing tags, trimming weird whitespace, fixing typos
-	- ✅ Why: Cleaner output = easier use later
-	14	Unit Testing with Pytest
-	- Writing tests for parse_chunk(), parse_usage(), etc.
-	- ✅ Why: Catches bugs when entries are malformed or incomplete
-	15	Data Validation & Schema Enforcement
-	- Using assert, manually checking fields
-	- ✅ Why: Keeps entries consistent (e.g., every term should have usage, even if 0)
-	16	Splitting Grouped Terms
-	- Logic to take "Fullín / Fundillo / Fuí" and create 3 entries
-	- ✅ Why: This enforces your "One Term, One Object" rule
-	17	Text Preprocessing Pipelines (Optional)
-	- Breaking your parsing into reusable, testable chunks
-	- ✅ Why: Makes your code modular and easy to test/extend
+---
 
-📌 Suggested Tools Alongside
-	- Python Tutor — to visualize loops and function returns
-	- replit or a notebook — for testing small snippets interactively
-	- Your own test_cases/ folder with raw text examples to try during testing
+#### **Step 2: Split the File into Individual Entries**
+
+Now, let's break that single block of text into a list, where each item is a complete dictionary entry.
+
+* **What to Do:** Read the entire file and split it into a list of strings based on blank lines between entries. Print the total number of entries you've found and inspect the first two items in the list to see if they were separated correctly.
+* **Python Concepts:**
+    * **`string.read()`**: To read the entire contents of the file into a string.
+    * **`re.split()`**: A powerful function from the regular expression module. Using `re.split(r'\n\s*\n', content)` will split the text on any occurrence of one or more blank lines.
+    * **`len()`**: To count the number of items in your list.
+    * **List Indexing (`my_list[0]`)**: To access and inspect specific elements.
+
+---
+
+#### **Step 3: Parse a Single, Simple Entry**
+
+Instead of trying to parse everything at once, focus on making one simple case work perfectly. We'll use the `abimbao` entry as our test case.
+
+* **What to Do:** Create a function named `parse_simple_entry(text)`. Inside, use regex to extract only three things: the term (`abimbao`), the short definition (`beaten up`), and the usage score (`8`). Have the function return a dictionary with these values and print the result.
+* **Python Concepts:**
+    * **Function Definition (`def`)**: To create a reusable block of code.
+    * **`re.search()`**: To find the first occurrence of a pattern in a string.
+    * **Regex Groups (`()`)**: To capture specific parts of the matched pattern.
+    * **Dictionaries**: To store the extracted data in a `key: value` format.
+
+---
+
+#### **Step 4: Expand Parser for Key-Value Fields**
+
+Build on the simple parser to extract all the single-line fields (`EX:`, `GS:`, `EN:`, `SYN:`).
+
+* **What to Do:** Modify your function, renaming it to `parse_entry(text)`. Add a regular expression that finds all key-value pairs. Test it again with the `abimbao` text and print the resulting, more detailed dictionary.
+* **Python Concepts:**
+    * **`re.findall()`**: To find *all* occurrences of a pattern.
+    * **`re.MULTILINE`**: A flag that allows your pattern to match at the beginning of each line, not just the start of the string.
+    * **Dictionary Updates**: Adding new key-value pairs to the dictionary you created in the last step.
+
+---
+
+#### **Step 5: Handle Grouped Terms (The "One Term, One Object" Rule)**
+
+Now, tackle the first major business rule from your documentation. The goal is to handle entries like `Fullín / Fundillo / Fuí`.
+
+* **What to Do:** Modify `parse_entry` to check if the term contains a `/`. If it does, split the terms and make the function return a **list of dictionaries**—one for each term. Test this specifically with the `fullín` entry text and confirm the output is a list containing three distinct objects.
+* **Python Concepts:**
+    * **`string.split('/')`**: To split the header line into a list of term names.
+    * **`for` Loops**: To iterate over the list of term names and create a dictionary for each one.
+    * **Returning a List**: Changing the function's output from a single dictionary to a list of dictionaries.
+
+---
+
+#### **Step 6: Handle Specialist Keys (Etymology)**
+
+Let's add logic for another specific rule: capturing etymology when it's present.
+
+* **What to Do:** Add code to `parse_entry` that looks for the `History:` and `Original word:` fields. If found, create a nested `etymology` dictionary and add it to the main object. Because the etymology only applies to `fullín`, make sure it's only added to the *first* object in the list your function returns.
+* **Python Concepts:**
+    * **Conditional Logic (`if`)**: To check if the `History:` field was found.
+    * **Nested Dictionaries**: Creating a dictionary inside another dictionary.
+
+---
+
+#### **Step 7: Full Integration, Validation, and Saving**
+
+You're ready for the final step! Run your completed parser over all the entries and save the result.
+
+* **What to Do:**
+    1.  Create an empty list called `all_parsed_terms`.
+    2.  Loop through the `raw_entries` list from Step 2.
+    3.  In the loop, call your final `parse_entry` function for each entry and use `list.extend()` to add the returned dictionary (or dictionaries) to `all_parsed_terms`.
+    4.  Print the final total number of objects created.
+    5.  Run the validation script logic from the previous answer to check your final list.
+    6.  Save the `all_parsed_terms` list to `dominican-terms-WIP.json`.
+* **Python Concepts:**
+    * **`list.extend()`**: To add all items from one list to another (crucial because `parse_entry` can return a list).
+    * **`json.dump()`**: To serialize your Python list of dictionaries into a JSON formatted file on disk.
