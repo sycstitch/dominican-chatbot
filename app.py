@@ -1,6 +1,7 @@
 # app.py
 import json
 import os
+from sentence_transformers import SentenceTransformer
 
 def main():
     """
@@ -19,6 +20,17 @@ def main():
         return
     except FileNotFoundError:
         print(f"❌ Error: El archivo '{dominican_slang_file}' no se encontró. Asegúrate de que el archivo exista.")
+        return
+    except Exception as e:
+        print(f"❌ Error al cargar el archivo '{dominican_slang_file}': {e}")
+        return
+
+    # Load the SentenceTransformer model.
+    try:
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+        print("✅ Modelo 'all-MiniLM-L6-v2' cargado correctamente.")
+    except Exception as e:
+        print(f"❌ Error al cargar el modelo 'all-MiniLM-L6-v2': {e}")
         return
 
     # print("✅ Servicio del Chatbot Chamo iniciado. ¡Listo para conversar!")
