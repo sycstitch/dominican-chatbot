@@ -153,10 +153,10 @@ This project aims for authenticity, but it's important to acknowledge its limita
   * [x] **Action:** Protect the proprietary data by creating a separate, smaller `dominican-slang-example.json` for public repository use.
 * **Phase 2: Core RAG Prototyping (Current Step)**
   * [ ] **Action:** Launch the entire environment with a single command: `docker-compose run --rm dominicanchatbot`.
-  * [ ] **Action:** Create the main Python script for the chatbot service.
-  * [ ] **Action:** In the script, load the `dominican-slang-example.json` data.
-  * [ ] **Action:** In the script, load the `all-MiniLM-L6-v2` model and write the "retrieval" function.
-  * [ ] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
+  * [ ] **Action:** Complete the main Python script for the chatbot service.
+    * [ ] **Action:** In the script, load the `dominican-slang-example.json` data.
+    * [ ] **Action:** In the script, load the `all-MiniLM-L6-v2` model and write the "retrieval" function.
+    * [ ] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
   * [ ] **Goal:** Create a working command-line version of the chatbot where the entire RAG pipeline is functional using the sample data.
 * **Phase 3: Polishing & Optimization**
   * [ ] **Action:** Adapt the Python script to point its API requests to OpenRouter.
