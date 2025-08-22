@@ -9,7 +9,7 @@
 ### **Case Study Outline & Project Log**
 
 - **Started:** July 4, 2025
-- **Last Updated:** July 9, 2025
+- **Last Updated:** August 22, 2025
 <br /><br />
 
 ### **Run the project**
@@ -91,7 +91,7 @@ This section outlines the key questions, points of confusion, and learning miles
   * **Learning:** Models are large data assets, not source code. They are downloaded into a **Docker Volume** (`ollamadata` in this case), which is a separate, persistent storage space managed by Docker. New users will need to run the `ollama pull` commands themselves to populate their own local volume.
 * **Pivotal Moment 7: Data Provenance & Ethics**
   * **Problem:** Realized that the primary dictionary source was proprietary, making it unethical and illegal to reproduce in a public project.
-  * **Learning:** The project's public-facing version will use a small, representative sample of 10-15 terms in a `dominican-terms-example.json` file. This allows the technology to be showcased without infringing on copyright.
+  * **Learning:** The project's public-facing version will use a small, representative sample of 10-15 terms in a `dominican-slang-example.json` file. This allows the technology to be showcased without infringing on copyright.
 <br /><br />
 
 ## **3. Tools, Models & Hardware**
@@ -126,7 +126,7 @@ This project aims for authenticity, but it's important to acknowledge its limita
 * **Regional & Social Variation:** Dominican Spanish is not monolithic. The primary human sources reflect this: one is a male from the countryside (*campo*), while the other is a female from the capital, Santo Domingo, who is more connected to urban music culture (reggaeton, dembow). This means the knowledge base may have gaps in slang that is hyper-regional (e.g., specific to the Cibao region) or not prevalent in certain social circles.
 * **Usage Frequency & Context:** While one dictionary source provides a helpful "usage meter" for many terms, this data is not available for all entries. Therefore, the chatbot's perception of a word's commonality may not always be precise. Furthermore, actual usage will always vary significantly based on an individual's specific social circle and location.
 * **Diaspora vs. Homeland:** The data is primarily sourced from speakers currently in the DR. The Spanish spoken by the large Dominican diaspora (most notably in New York and Florida) has its own unique evolution and influences, which may not be fully captured here.
-* **Data Sample Size:** The public version of this project on GitHub uses a small, representative sample of terms (`dominican-terms-example.json`) to respect the copyright of proprietary dictionary sources. The full knowledge base used for private development is more extensive.
+* **Data Sample Size:** The public version of this project on GitHub uses a small, representative sample of terms (`dominican-slang-example.json`) to respect the copyright of proprietary dictionary sources. The full knowledge base used for private development is more extensive.
 * **Snapshot in Time:** Language, especially slang, evolves rapidly. This project's knowledge base represents a snapshot from 2025 and will require ongoing updates to stay current.
 <br /><br />
 
@@ -138,11 +138,11 @@ This project aims for authenticity, but it's important to acknowledge its limita
   * [x] **Action:** Confirmed interactive input works with Docker.
   * [x] **Action:** Used the Docker setup to run Ollama and download the selected Generator and Retriever models.
   * [ ] **Action:** Determine `JSON` format for dictionary entries.
-    * [x] Vocabulary (July 7-9)
+    * [x] Vocabulary 
     * [ ] Habits
   * [ ] **Action:** Convert dictionary vocabulary entries into a structured `JSON` format.
     * [ ] **Action:** Create a Python script to automate the first-pass conversion of the dictionary source into a structured JSON format.
-      * [ ] Vocabulary
+      * [x] Vocabulary
       * [ ] Habits
     * [ ] **Action:** Create a second Python script to validate the generated JSON output, flagging any entries that do not conform to the data structure.
       * [ ] Vocabulary
@@ -150,11 +150,11 @@ This project aims for authenticity, but it's important to acknowledge its limita
     * [ ] **Action:** Manually review and correct the entries flagged by the validation script, implementing the "Script -> Validate -> Correct" loop.
       * [ ] Vocabulary
       * [ ] Habits
-  * [ ] **Action:** Protect the proprietary data by creating a separate, smaller `dominican-terms-example.json` for public repository use.
+  * [x] **Action:** Protect the proprietary data by creating a separate, smaller `dominican-slang-example.json` for public repository use.
 * **Phase 2: Core RAG Prototyping (Current Step)**
   * [ ] **Action:** Launch the entire environment with a single command: `docker-compose run --rm dominicanchatbot`.
   * [ ] **Action:** Create the main Python script for the chatbot service.
-  * [ ] **Action:** In the script, load the `dominican-terms-example.json` data.
+  * [ ] **Action:** In the script, load the `dominican-slang-example.json` data.
   * [ ] **Action:** In the script, load the `all-MiniLM-L6-v2` model and write the "retrieval" function.
   * [ ] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
   * [ ] **Goal:** Create a working command-line version of the chatbot where the entire RAG pipeline is functional using the sample data.

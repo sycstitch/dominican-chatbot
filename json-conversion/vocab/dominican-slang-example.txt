@@ -1,0 +1,177 @@
+270. Guagua
+DEF: Bus for public transportation in DR.
+EX: "Si tú quieres ir pa' allá, tú tiene' que coger una guagua."
+GS: "Si tú quieres ir para allá tienes que tomar un autobus."
+EN: "If you want to get there, you will have to take a bus."
+SYN: Autobus / Minibus
+ANT:-
+USAGE: 10/10
+
+273. Guagua platanera
+DEF: A pick-up truck, typically an old Toyota Tacoma, that goes around neighborhoods selling fruits and vegetables, often announcing their products with a megaphone.
+EX: "Si pasa una guagua platanera, párala pa' comprar fruta' pa' hacer una batida."
+GS: "Si pasa una guagua platanera, párala para comprar frutas para hacer un batido."
+EN: "If a guagua platanera passes by, please stop it so I can buy some fruits for a smoothie."
+SYN:-
+ANT:-
+USAGE: 10/10
+
+567. Zafacón
+DEF: Trashcan.
+EX: "Bótame eso en el zafacón."
+GS: "Tira eso en el bote de basura."
+EN: "Throw that in the trashcan."
+SYN: Bote de basura / Basurero
+ANT:-
+USAGE: 10/10
+
+10. Agentao / Agentá (Agentado / Agentada)
+DEF: Arrogant.
+EX: "Después que compraste ese carro tú ta' muy agentao."
+GS: "Después que compraste ese carro, tú estás muy arrogante."
+EN: "You became very arrogant after you bought that car."
+SYN: Arrogante / Atrevido / Atrevida
+ANT: Humilde
+USAGE: 8/10
+---
+DEF2: Bold.
+SYN2: Atrevido / Atrevida
+ANT2: Humilde
+USAGE: 8/10
+
+256. Galleta
+DEF: A slap.
+NOTE: This term is ambiguous, as it can also mean "cookie". Context is key.
+EX: "¿Tú quiere' una galleta?"
+GS: "¿Quieres una bofetada?"
+EN: "Do you want me to slap you?"
+SYN: Bofetada
+ANT:-
+USAGE: 10/10
+---
+DEF2: A cookie.
+NOTE: This is the standard Spanish meaning. The Dominican usage as "slap" creates ambiguity.
+EX2: "¿Tú quiere' una galleta?"
+GS2: "¿Quieres una galleta?"
+EN2: "Do you want a cookie?"
+SYN2: Galleta
+ANT2:-
+USAGE: 10/10
+
+30. Aplatanao' / Aplataná (Aplatanado / Aplatanada)
+DEF: A foreigner who knows a lot about Dominican culture.
+EX: "Ella es de Francia, pero ella ta' aplataná."
+GS: "Ella es de Francia, pero ella sabe mucho de la cultura dominicana."
+EN: "She is from France, but she knows a lot about Dominican culture."
+SYN:-
+ANT:-
+USAGE: 9/10
+
+505. Alalgalto / Alaigaito
+DEF: A small lizard.
+NOTE: ‘Alalgalto’ used in the East region. ‘Alaigaito’ used in the North region.
+SYN: Lagartija
+ANT:-
+USAGE: 6/10
+
+52. Bembú / Bembúa
+DEF: A person with big lips.
+NOTE: Offensive
+EX: "Él es bembú."
+GS: "Él tiene labios grandes."
+EN: "He has big lips."
+SYN: De labio grandes
+ANT:-
+USAGE: 9/10
+
+242. Fullín
+DEF: Butt.
+NOTE: From the English phrase "full jean," used by U.S. Marines in 1916 to describe the appearance of Dominican women in tight jeans.
+EX: "Tienes el fullín sucio."
+GS: "Tienes el trasero sucio."
+EN: "You have dirt on your butt."
+SYN: Trasero
+ANT:-
+USAGE: 7/10
+
+244. Fuí
+DEF: Butt.
+NOTE: ‘Fuí’ in standard Spanish means ‘I went’
+SYN: Trasero
+ANT:-
+USAGE: 7/10
+
+701. Ustedes son cagao / Ustedes son pin pun / Ustedes son dos gotas de agua
+DEF: You guys really look alike.
+EX: "¿Él es hermano tuyo? Porque ustedes son cagao."
+GS: "¿Él es tu hermano? Porque ustedes son idénticos."
+EN: "Is he your brother? Because you two look a lot alike."
+SYN: Parecerse mucho a alguien
+ANT:-
+USAGE: 8/10
+
+598. Hay un maco
+DEF: There is something wrong; this is suspicious.
+NOTE: Literally means "there is a frog".
+EX: "Aquí como que hay un maco."
+GS: "Algo anda mal."
+EN: "There is something wrong here / There is something suspicious about this."
+SYN: Sospechoso / Algo anda mal
+ANT:-
+USAGE: 10/10
+
+583. Coger el monte
+DEF: To go crazy.
+EX: "Yo estoy a punto de coger el monte."
+GS: "Estoy volviéndome loca."
+EN: "I am going crazy."
+SYN: Volverse loco
+ANT:-
+USAGE: 6/10
+
+593. Estar frío con alguien
+DEF: To not have problems with someone; to be on good terms with someone; to be cool with someone.
+EX: "Yo toy frio con mi suegra."
+GS: "Tengo una buena relación con mi suegra."
+EN: "I am cool with my mother-in-law."
+SYN:-
+ANT: Estar caliente
+USAGE: 9/10
+
+594. Tú no corre' a na'
+DEF: You are not street smart; you are lame; you don't have the guts to do it.
+EX: "Él no e' arretao pa' hacerlo, él no corre' a na'."
+GS: "Él no es lo suficientemente valiente para hacerlo."
+EN: "He is not brave enough; he doesn't have the guts to do it."
+SYN: Palomo (DR)
+ANT:-
+USAGE: 6/10
+
+415. Pariguayo / Pariguaya
+DEF: Party watcher; a coward; a boring, slow person with no attitude.
+EX: "Si ella te guta, ve y habla con ella, no sea' pariguayo."
+GS: "Si a ella le gustas, ve y habla con ella, no seas soso."
+EN: "If you like her, go and talk to her, don't be a coward."
+SYN: Soso / Aburrido / Lento
+ANT:-
+USAGE: 10/10
+
+416. Palomo / Palomo
+DEF: Party watcher; a coward; a boring, slow person with no attitude.
+SYN: Soso / Aburrido / Lento
+ANT:-
+USAGE: 10/10
+
+706. Coño
+DEF: An exclamation of surprise, anger, or emphasis, similar to "damn" or "fuck".
+SYN: Demonios / Carajo
+ANT:-
+USAGE: 10/10
+EXPLICITNESS: 6/10
+
+725. Cónchale
+DEF: A minced oath for "Coño", similar to "Dang it".
+SYN:-
+ANT:-
+USAGE: 10/10
+EXPLICITNESS: 0/10
