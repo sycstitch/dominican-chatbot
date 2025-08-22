@@ -38,6 +38,24 @@ def encode_knowledge_base(model, data, target_field):
         return
     return embeddings
 
+def find_best_match(user_input, model, embeddings, data):
+    """Finds the best match for a user's input against the knowledge base embeddings."""
+    # (retrieval function):
+    # Take the user's input string (e.g., "what does 'jevi' mean?"), the model, and the pre-computed embeddings as input.
+    # Encode the user's input into its own embedding using model.encode().
+    # Calculate the similarity between the user's input embedding and all of the knowledge base embeddings. (hint: model.similarity() function)
+    # Find the highest similarity score and identify which entry in your original data it corresponds to.
+    # Return that best-matching entry.
+    pass  # Placeholder for future logic
+
+def generate_response(best_match):
+    """Generates a response based on the best match found in the knowledge base."""
+    # (generation function):
+    # Take the best-matching entry from the knowledge base and construct a detailed prompt.
+    # Send this prompt to the Ollama service to get a response.
+    # Return the final response.
+    pass  # Placeholder for future logic
+
 def main():
     # 1. Load the model (can stay in main for now)
     try:
