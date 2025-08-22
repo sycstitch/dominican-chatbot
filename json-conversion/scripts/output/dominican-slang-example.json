@@ -1,0 +1,347 @@
+[
+  {
+    "id": "270",
+    "term": "Guagua",
+    "definitions": [
+      {
+        "def": "Bus for public transportation in DR.",
+        "ex": "Si tú quieres ir pa' allá, tú tiene' que coger una guagua.",
+        "gs": "Si tú quieres ir para allá tienes que tomar un autobus.",
+        "en": "If you want to get there, you will have to take a bus.",
+        "syn": [
+          "Autobus",
+          "Minibus"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "273",
+    "term": "Guagua platanera",
+    "definitions": [
+      {
+        "def": "A pick-up truck, typically an old Toyota Tacoma, that goes around neighborhoods selling fruits and vegetables, often announcing their products with a megaphone.",
+        "ex": "Si pasa una guagua platanera, párala pa' comprar fruta' pa' hacer una batida.",
+        "gs": "Si pasa una guagua platanera, párala para comprar frutas para hacer un batido.",
+        "en": "If a guagua platanera passes by, please stop it so I can buy some fruits for a smoothie.",
+        "syn": [],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "567",
+    "term": "Zafacón",
+    "definitions": [
+      {
+        "def": "Trashcan.",
+        "ex": "Bótame eso en el zafacón.",
+        "gs": "Tira eso en el bote de basura.",
+        "en": "Throw that in the trashcan.",
+        "syn": [
+          "Bote de basura",
+          "Basurero"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "term": "Agentao / Agentá (Agentado / Agentada)",
+    "definitions": [
+      {
+        "def": "Arrogant.",
+        "ex": "Después que compraste ese carro tú ta' muy agentao.",
+        "gs": "Después que compraste ese carro, tú estás muy arrogante.",
+        "en": "You became very arrogant after you bought that car.",
+        "syn": [
+          "Arrogante",
+          "Atrevido",
+          "Atrevida"
+        ],
+        "ant": [
+          "Humilde"
+        ],
+        "usage": "8/10"
+      },
+      {
+        "def": "Bold.",
+        "syn": [
+          "Atrevido",
+          "Atrevida"
+        ],
+        "ant": [
+          "Humilde"
+        ],
+        "usage": "8/10"
+      }
+    ]
+  },
+  {
+    "id": "256",
+    "term": "Galleta",
+    "definitions": [
+      {
+        "def": "A slap.",
+        "note": "This term is ambiguous, as it can also mean \"cookie\". Context is key.",
+        "ex": "¿Tú quiere' una galleta?",
+        "gs": "¿Quieres una bofetada?",
+        "en": "Do you want me to slap you?",
+        "syn": [
+          "Bofetada"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      },
+      {
+        "def": "A cookie.",
+        "note": "This is the standard Spanish meaning. The Dominican usage as \"slap\" creates ambiguity.",
+        "ex": "¿Tú quiere' una galleta?",
+        "gs": "¿Quieres una galleta?",
+        "en": "Do you want a cookie?",
+        "syn": [
+          "Galleta"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "term": "Aplatanao' / Aplataná (Aplatanado / Aplatanada)",
+    "definitions": [
+      {
+        "def": "A foreigner who knows a lot about Dominican culture.",
+        "ex": "Ella es de Francia, pero ella ta' aplataná.",
+        "gs": "Ella es de Francia, pero ella sabe mucho de la cultura dominicana.",
+        "en": "She is from France, but she knows a lot about Dominican culture.",
+        "syn": [],
+        "ant": [],
+        "usage": "9/10"
+      }
+    ]
+  },
+  {
+    "id": "505",
+    "term": "Alalgalto / Alaigaito",
+    "definitions": [
+      {
+        "def": "A small lizard.",
+        "note": "‘Alalgalto’ used in the East region. ‘Alaigaito’ used in the North region.",
+        "syn": [
+          "Lagartija"
+        ],
+        "ant": [],
+        "usage": "6/10"
+      }
+    ]
+  },
+  {
+    "id": "52",
+    "term": "Bembú / Bembúa",
+    "definitions": [
+      {
+        "def": "A person with big lips.",
+        "note": "Offensive",
+        "ex": "Él es bembú.",
+        "gs": "Él tiene labios grandes.",
+        "en": "He has big lips.",
+        "syn": [
+          "De labio grandes"
+        ],
+        "ant": [],
+        "usage": "9/10"
+      }
+    ]
+  },
+  {
+    "id": "242",
+    "term": "Fullín",
+    "definitions": [
+      {
+        "def": "Butt.",
+        "note": "From the English phrase \"full jean,\" used by U.S. Marines in 1916 to describe the appearance of Dominican women in tight jeans.",
+        "ex": "Tienes el fullín sucio.",
+        "gs": "Tienes el trasero sucio.",
+        "en": "You have dirt on your butt.",
+        "syn": [
+          "Trasero"
+        ],
+        "ant": [],
+        "usage": "7/10"
+      }
+    ]
+  },
+  {
+    "id": "244",
+    "term": "Fuí",
+    "definitions": [
+      {
+        "def": "Butt.",
+        "note": "‘Fuí’ in standard Spanish means ‘I went’",
+        "syn": [
+          "Trasero"
+        ],
+        "ant": [],
+        "usage": "7/10"
+      }
+    ]
+  },
+  {
+    "id": "701",
+    "term": "Ustedes son cagao / Ustedes son pin pun / Ustedes son dos gotas de agua",
+    "definitions": [
+      {
+        "def": "You guys really look alike.",
+        "ex": "¿Él es hermano tuyo? Porque ustedes son cagao.",
+        "gs": "¿Él es tu hermano? Porque ustedes son idénticos.",
+        "en": "Is he your brother? Because you two look a lot alike.",
+        "syn": [
+          "Parecerse mucho a alguien"
+        ],
+        "ant": [],
+        "usage": "8/10"
+      }
+    ]
+  },
+  {
+    "id": "598",
+    "term": "Hay un maco",
+    "definitions": [
+      {
+        "def": "There is something wrong; this is suspicious.",
+        "note": "Literally means \"there is a frog\".",
+        "ex": "Aquí como que hay un maco.",
+        "gs": "Algo anda mal.",
+        "en": "There is something wrong here / There is something suspicious about this.",
+        "syn": [
+          "Sospechoso",
+          "Algo anda mal"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "583",
+    "term": "Coger el monte",
+    "definitions": [
+      {
+        "def": "To go crazy.",
+        "ex": "Yo estoy a punto de coger el monte.",
+        "gs": "Estoy volviéndome loca.",
+        "en": "I am going crazy.",
+        "syn": [
+          "Volverse loco"
+        ],
+        "ant": [],
+        "usage": "6/10"
+      }
+    ]
+  },
+  {
+    "id": "593",
+    "term": "Estar frío con alguien",
+    "definitions": [
+      {
+        "def": "To not have problems with someone; to be on good terms with someone; to be cool with someone.",
+        "ex": "Yo toy frio con mi suegra.",
+        "gs": "Tengo una buena relación con mi suegra.",
+        "en": "I am cool with my mother-in-law.",
+        "syn": [],
+        "ant": [
+          "Estar caliente"
+        ],
+        "usage": "9/10"
+      }
+    ]
+  },
+  {
+    "id": "594",
+    "term": "Tú no corre' a na'",
+    "definitions": [
+      {
+        "def": "You are not street smart; you are lame; you don't have the guts to do it.",
+        "ex": "Él no e' arretao pa' hacerlo, él no corre' a na'.",
+        "gs": "Él no es lo suficientemente valiente para hacerlo.",
+        "en": "He is not brave enough; he doesn't have the guts to do it.",
+        "syn": [
+          "Palomo (DR)"
+        ],
+        "ant": [],
+        "usage": "6/10"
+      }
+    ]
+  },
+  {
+    "id": "415",
+    "term": "Pariguayo / Pariguaya",
+    "definitions": [
+      {
+        "def": "Party watcher; a coward; a boring, slow person with no attitude.",
+        "ex": "Si ella te guta, ve y habla con ella, no sea' pariguayo.",
+        "gs": "Si a ella le gustas, ve y habla con ella, no seas soso.",
+        "en": "If you like her, go and talk to her, don't be a coward.",
+        "syn": [
+          "Soso",
+          "Aburrido",
+          "Lento"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "416",
+    "term": "Palomo / Palomo",
+    "definitions": [
+      {
+        "def": "Party watcher; a coward; a boring, slow person with no attitude.",
+        "syn": [
+          "Soso",
+          "Aburrido",
+          "Lento"
+        ],
+        "ant": [],
+        "usage": "10/10"
+      }
+    ]
+  },
+  {
+    "id": "706",
+    "term": "Coño",
+    "definitions": [
+      {
+        "def": "An exclamation of surprise, anger, or emphasis, similar to \"damn\" or \"fuck\".",
+        "syn": [
+          "Demonios",
+          "Carajo"
+        ],
+        "ant": [],
+        "usage": "10/10",
+        "explicitness": "6/10"
+      }
+    ]
+  },
+  {
+    "id": "725",
+    "term": "Cónchale",
+    "definitions": [
+      {
+        "def": "A minced oath for \"Coño\", similar to \"Dang it\".",
+        "syn": [],
+        "ant": [],
+        "usage": "10/10",
+        "explicitness": "0/10"
+      }
+    ]
+  }
+]
