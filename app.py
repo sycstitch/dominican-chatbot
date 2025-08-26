@@ -2,6 +2,7 @@
 import json
 import os
 from sentence_transformers import SentenceTransformer
+import torch
 
 def load_knowledge_base(file_path):
     # Load the example data from the text file.
@@ -22,42 +23,61 @@ def load_knowledge_base(file_path):
 
 def encode_knowledge_base(model, data, target_field):
     """Encodes the knowledge base data into embeddings using the provided model."""
-    if not data:
-        print(f"❌ Error: No hay datos para codificar en '{target_field}'.")
-        return
-    if target_field not in data[0]:
-        print(f"❌ Error: El campo '{target_field}' no se encuentra en los datos.")
-        return
+    embeddings = []
+    terms = []
+    if target_field == "definitions":
+        for i in data:
+            term = i.get("term", "no hay término :(")
+            if "definitions" in i:
+                for dictionary in i["definitions"]:
+                    if "def" in dictionary:
+                        definition = dictionary["def"]
+                        term_def = f"{term}: {dictionary}"
+                        embeddings.append(term_def)
 
-    try:
-        sentences = [entry[target_field] for entry in data if target_field in entry]
-        embeddings = model.encode(sentences, convert_to_tensor=True)
-        print(f"✅ Embeddings para '{target_field}' creados correctamente.")
-    except Exception as e:
-        print(f"❌ Error al crear embeddings para '{target_field}': {e}")
-        return
-    return embeddings
+                        terms.append({"id":i.get("id"), "original_term":term, "definition_text": definition, "full_definition":dictionary, "embedded_text": term_def})
+        embeddings = model.encode(embeddings, convert_to_tensor=True)
+    return embeddings, terms
 
-def find_best_match(user_input, model, embeddings, data):
-    """Finds the best match for a user's input against the knowledge base embeddings."""
-    # (retrieval function):
-    # Take the user's input string (e.g., "what does 'jevi' mean?"), the model, and the pre-computed embeddings as input.
-    # Encode the user's input into its own embedding using model.encode().
-    # Calculate the similarity between the user's input embedding and all of the knowledge base embeddings. (hint: model.similarity() function)
-    # Find the highest similarity score and identify which entry in your original data it corresponds to.
-    # Return that best-matching entry.
-    pass  # Placeholder for future logic
+def find_best_match(user_input, model, embeddings, terms):
+    """Retrieval Function: Finds the best match for a user's input against the knowledge base embeddings."""
+    # 1. Take the user's input string (e.g., "what does 'jevi' mean?"), the model, and the pre-computed embeddings as input.
+    # 2. Encode the user's input into its own embedding using model.encode().
+    input_embedding = model.encode(user_input, convert_to_tensor=True)
+    # 3. Calculate the similarity between the user's input embedding and all of the knowledge base embeddings. (hint: model.similarity() function)
+    similarities = model.similarity(input_embedding, embeddings)
+    # 4. Find the highest similarity score and identify which entry in your original data it corresponds to.
+    similarities_uno = similarities.squeeze()
+    best_match_index = torch.argmax(similarities_uno).item()
+    best_match_info = terms[best_match_index]
+    return best_match_info
+
 
 def generate_response(best_match):
-    """Generates a response based on the best match found in the knowledge base."""
-    # (generation function):
+    """Generation Function: Generates a response based on the best match found in the knowledge base."""
     # Take the best-matching entry from the knowledge base and construct a detailed prompt.
     # Send this prompt to the Ollama service to get a response.
     # Return the final response.
-    pass  # Placeholder for future logic
+    if best_match:
+        term = best_match.get('original_term', 'el término')
+        definition = best_match.get('definition_text', 'No se encontró una definición.')
+        example = best_match.get('full_definition', {}).get('ex', 'No se proporcionó ningún ejemplo.')
+        english_translation = best_match.get('full_definition', {}).get('en', 'No se proporcionó traducción al inglés.')
+
+        response = (
+            f"Según mi base de conocimientos de jerga dominicana:\n\n"
+            f"El término '{term}' significa: '{definition}'.\n"
+            f"Ejemplo: '{example}'\n"
+            f"En inglés, esto se traduce a: '{english_translation}'.\n"
+            f"¿Hay algo más que te gustaría saber sobre '{term}' o algún otro término?"
+        )
+        return response
+    else:
+        return "Lo siento, no pude encontrar una respuesta relevante en mi base de conocimientos."
 
 def main():
     # 1. Load the model (can stay in main for now)
+    # (enhance later - print the 'model' variable)
     try:
         model = SentenceTransformer('all-MiniLM-L6-v2')
         print("✅ Modelo 'all-MiniLM-L6-v2' cargado correctamente.")
@@ -75,38 +95,29 @@ def main():
     print("✅ slang_data is loaded.")
     #habits_data = load_knowledge_base('json-conversion', 'habits', 'dominican-habits.json') # See? Reusable!
 
-    # 3. Create the embeddings
-    slang_embeddings = encode_knowledge_base(model, slang_data, 'definition')
+    # 3. Create the embeddings for data
+    slang_embeddings, slang_term = encode_knowledge_base(model, slang_data, 'definitions')
     #habits_embeddings = encode_knowledge_base(model, habits_data, 'explanation')
 
-    # 4. Start the main chat loop
     print("✅ Servicio del Chatbot Chamo iniciado. ¡Listo para conversar!")
     print("   Escribe 'salir' para terminar la sesión.")
     print("-" * 50)
-    # while True:
-    #     try:
-    #         # The input() function pauses the program and waits for the user to type.
-    #         user_input = input("Tú: ")
+    while True:
+        try:
+            user_input = input("Tú: ")
 
-    #         # Check if the user wants to exit the application.
-    #         if user_input.lower() == 'salir':
-    #             break
+            if user_input.lower() == 'salir':
+                break
 
-    #         # --- Placeholder for Future Logic ---
-    #         # In the next steps, all your RAG logic will go here.
-    #         # 1. You'll send user_input to the Retriever model.
-    #         # 2. You'll get back relevant context from your dictionary.
-    #         # 3. You'll build a prompt and send it to the Ollama service.
-    #         # 4. You'll print the final response from the Generator model.
+            best_match = find_best_match(user_input, model, slang_embeddings, slang_term)
+            response = generate_response(best_match)
+            print(f"Chamo: {response}")
 
-    #         # For now, we just echo the input back to show it's working.
-    #         print(f"Chamo (dev): Recibí tu mensaje: '{user_input}'")
+        except (KeyboardInterrupt, EOFError):
+            break
 
-    #     except (KeyboardInterrupt, EOFError):
-    #         # This handles both Ctrl+C and the case where the input stream closes.
-    #         break
+    print("\n👋 ¡Nos vemos! El servicio del chatbot se está cerrando.")
 
-    # print("\n👋 ¡Nos vemos! El servicio del chatbot se está cerrando.")
 
 if __name__ == "__main__":
     main()
