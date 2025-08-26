@@ -32,7 +32,7 @@ def encode_knowledge_base(model, data, target_field):
                 for dictionary in i["definitions"]:
                     if "def" in dictionary:
                         definition = dictionary["def"]
-                        term_def = f"{term}: {dictionary}"
+                        term_def = f"{term}: {definition}"
                         embeddings.append(term_def)
 
                         terms.append({"id":i.get("id"), "original_term":term, "definition_text": definition, "full_definition":dictionary, "embedded_text": term_def})
@@ -65,11 +65,11 @@ def generate_response(best_match):
         english_translation = best_match.get('full_definition', {}).get('en', 'No se proporcionó traducción al inglés.')
 
         response = (
-            f"Según mi base de conocimientos de jerga dominicana:\n\n"
-            f"El término '{term}' significa: '{definition}'.\n"
-            f"Ejemplo: '{example}'\n"
-            f"En inglés, esto se traduce a: '{english_translation}'.\n"
-            f"¿Hay algo más que te gustaría saber sobre '{term}' o algún otro término?"
+            f"\tSegún mi base de conocimientos de jerga dominicana:\n\n"
+            f"\tEl término '{term}' significa: '{definition}'.\n"
+            f"\tEjemplo: '{example}'\n"
+            f"\tEn inglés, esto se traduce a: '{english_translation}'.\n"
+            f"\t¿Hay algo más que te gustaría saber sobre '{term}' o algún otro término?"
         )
         return response
     else:
@@ -104,7 +104,7 @@ def main():
     print("-" * 50)
     while True:
         try:
-            user_input = input("Tú: ")
+            user_input = input("\nTú: ")
 
             if user_input.lower() == 'salir':
                 break
