@@ -3,6 +3,7 @@ import json
 import os
 from sentence_transformers import SentenceTransformer
 import torch
+import requests
 
 def load_knowledge_base(file_path):
     # Load the example data from the text file.
@@ -58,22 +59,36 @@ def generate_response(best_match):
     # Take the best-matching entry from the knowledge base and construct a detailed prompt.
     # Send this prompt to the Ollama service to get a response.
     # Return the final response.
-    if best_match:
-        term = best_match.get('original_term', 'el término')
-        definition = best_match.get('definition_text', 'No se encontró una definición.')
-        example = best_match.get('full_definition', {}).get('ex', 'No se proporcionó ningún ejemplo.')
-        english_translation = best_match.get('full_definition', {}).get('en', 'No se proporcionó traducción al inglés.')
 
-        response = (
-            f"\tSegún mi base de conocimientos de jerga dominicana:\n\n"
-            f"\tEl término '{term}' significa: '{definition}'.\n"
-            f"\tEjemplo: '{example}'\n"
-            f"\tEn inglés, esto se traduce a: '{english_translation}'.\n"
-            f"\t¿Hay algo más que te gustaría saber sobre '{term}' o algún otro término?"
-        )
-        return response
-    else:
+    if not best_match:
         return "Lo siento, no pude encontrar una respuesta relevante en mi base de conocimientos."
+
+    ollama_url = "http://ollama:11434/api/generate" # or /api/chat for chat interactions
+
+    prompt_text = f"Explica el siguiente término en español de manera clara y sencilla: '{best_match['original_term']}'. Aquí está la definición: '{best_match['definition_text']}'. Proporciona un ejemplo de uso en una oración si es posible."
+
+    # Define the request payload
+    payload = {
+        "model": "mistral:7b-instruct-q4_K_M",
+        "prompt": prompt_text,
+        "stream": False # Set to True for streaming responses
+    }
+
+    # Send the POST request
+    try:
+        response = requests.post(ollama_url, json=payload)
+        response.raise_for_status() # Raise an exception for bad status codes
+        data = response.json() # Parse the JSON response
+
+        return data.get("response", "Lo siento, no pude generar una respuesta en este momento.")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making request: {e}")
+        return "Lo siento, hubo un problema de conexión con el servicio de IA."
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON response: {e}")
+        return "Lo siento, hubo un problema al decodigar json."
+
 
 def main():
     # 1. Load the model (can stay in main for now)
@@ -93,7 +108,7 @@ def main():
     slang_file_path = os.path.join(path_part1, path_part2, filename)
     slang_data = load_knowledge_base(slang_file_path)
     print("✅ slang_data is loaded.")
-    #habits_data = load_knowledge_base('json-conversion', 'habits', 'dominican-habits.json') # See? Reusable!
+    #habits_data = load_knowledge_base('json-conversion', 'habits', 'dominican-habits.json')
 
     # 3. Create the embeddings for data
     slang_embeddings, slang_term = encode_knowledge_base(model, slang_data, 'definitions')
