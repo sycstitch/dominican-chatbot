@@ -9,7 +9,7 @@
 ### **Case Study Outline & Project Log**
 
 - **Started:** July 4, 2025
-- **Last Updated:** August 22, 2025
+- **Last Updated:** August 27, 2025
 <br /><br />
 
 ### **Run the project**
