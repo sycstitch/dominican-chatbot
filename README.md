@@ -156,7 +156,7 @@ This project aims for authenticity, but it's important to acknowledge its limita
   * [x] **Action:** Complete the main Python script for the chatbot service.
     * [x] **Action:** In the script, load the `dominican-slang-example.json` data.
     * [x] **Action:** In the script, load the `all-MiniLM-L6-v2` model and write the "retrieval" function.
-    * [ ] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
+    * [x] **Action:** In the script, write the "generation" function that constructs a detailed prompt and sends it to the Ollama service.
   * [x] **Goal:** Create a working command-line version of the chatbot where the entire RAG pipeline is functional using the sample data.
 * **Phase 3: Polishing & Optimization**
   * [ ] **Action:** Adapt the Python script to point its API requests to OpenRouter.
